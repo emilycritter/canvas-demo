@@ -19,8 +19,10 @@
   var ctx = canvas1.getContext('2d'); // save the canvas context in a variable
 
   // Set the canvas size
-  canvas1.width = 800;
-  canvas1.height = 600;
+  var w = 800;
+  var h = 600;
+  canvas1.width = w;
+  canvas1.height = h;
   // Draw a red circle
   ctx.fillStyle = "#e25353";
   ctx.arc(75,75,50,0,2*Math.PI);
@@ -42,6 +44,19 @@
   ctx.moveTo(425, 25);
   ctx.lineTo(525, 125);
   ctx.stroke();
+  // Draw a blue square at 45 degrees
+  ctx.save();
+  ctx.rotate(45 * Math.PI/180);
+  ctx.fillStyle = "#2f6daf";
+  ctx.fillRect(150, 25, 100, 100);
+  ctx.restore();
+  // Draw a blue square at double size on the center of screen
+  ctx.save();
+  ctx.translate(w/2, h/2);
+  ctx.scale(2, 2);
+  ctx.fillStyle = "#2f6daf";
+  ctx.fillRect(-50, -50, 100, 100);
+  ctx.restore();
  </script>
 </body>
 </html>
