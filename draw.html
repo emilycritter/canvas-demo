@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Canvas - Hello World</title>
+ <style>
+  /* Center canvas and set border */
+  canvas {
+   display: block;
+   margin: 0 auto;
+   border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+ <canvas id="canvas1">Canvas not supported.</canvas>
+<script>
+  var canvas1 = document.getElementById('canvas1'); // save the canvas element in a variable
+  var ctx = canvas1.getContext('2d'); // save the canvas context in a variable
+
+  // Set the canvas size
+  canvas1.width = 800;
+  canvas1.height = 600;
+  // Draw a red circle
+  ctx.fillStyle = "#e25353";
+  ctx.arc(75,75,50,0,2*Math.PI);
+  ctx.fill();
+  // Draw a blue square
+  ctx.fillStyle = "#2f6daf";
+  ctx.fillRect(150, 25, 100, 100);
+  // Draw the outline of a blue square
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#2f6daf";
+  ctx.strokeRect(275, 25, 100, 100);
+  // Draw a small square
+  ctx.fillStyle = "#2f6daf";
+  ctx.fillRect(400, 25, 10, 10);
+  // Draw a black line
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#000000";
+  ctx.beginPath();
+  ctx.moveTo(425, 25);
+  ctx.lineTo(525, 125);
+  ctx.stroke();
+ </script>
+</body>
+</html>
