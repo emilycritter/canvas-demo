@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Canvas - Hello World</title>
+ <style>
+  /* Center canvas and set border */
+  canvas {
+   display: block;
+   margin: 0 auto;
+   border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+ <canvas id="canvas1">Canvas not supported.</canvas>
+<script>
+  var canvas1 = document.getElementById('canvas1'); // save the canvas element in a variable
+  var ctx = canvas1.getContext('2d'); // save the canvas context in a variable
+
+  // Set the canvas size
+  var w = 800;
+  var h = 600;
+  canvas1.width = w;
+  canvas1.height = h;
+  var img = new Image(); // Create image element
+  img.onload = function() {
+     // draw pattern after image loads
+     var pattern = ctx.createPattern(img, "repeat");
+     ctx.fillStyle = pattern;
+     ctx.fillRect(0,0,w,h);
+  }
+  img.src = "https://i.imgur.com/64y9SEC.jpg"; // Set image source path
+ </script>
+</body>
+</html>

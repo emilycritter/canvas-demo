@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Canvas - Hello World</title>
+ <style>
+  /* Center canvas and set border */
+  canvas {
+   display: block;
+   margin: 0 auto;
+   border: 1px solid black;
+  }
+</style>
+</head>
+<body>
+ <canvas id="canvas1">Canvas not supported.</canvas>
+<script>
+  var canvas1 = document.getElementById('canvas1'); // save the canvas element in a variable
+  var ctx = canvas1.getContext('2d'); // save the canvas context in a variable
+
+  // Set the canvas size
+  var w = 800;
+  var h = 600;
+  canvas1.width = w;
+  canvas1.height = h;
+
+  // Create a sprite with coin image
+  var coin = new Sprite("https://i.imgur.com/tVCEsMS.png", 10, 10, 1000, 100);
+  coin.totalFrames = 10;
+  coin.ticksPerFrame = 5;
+  loop(); //start the main loop
+  function loop() {
+    ctx.clearRect(0, 0, w, h); // clear the canvas
+    coin.update(); // update frame count
+    coin.render(); // render sprite
+    window.requestAnimationFrame(loop); // repeat the main loop
+  }
+
+  function Sprite(img, x, y, w, h) {
+    var self = this;
+    self.x = x;
+    self.y = y;
+    self.w = w;
+    self.h = h;
+    self.frameIndex = 0;
+    self.tickCount = 0;
+    self.ticksPerFrame = 0;
+    self.totalFrames = 1;
+    self.image = null;
+    self.loop = true;
+    self.render = function() {
+      if (self.image != null) {
+        ctx.drawImage(
+          self.image,
+          self.frameIndex * self.w / self.totalFrames,
+          0,
+          self.w / self.totalFrames,
+          self.h,
+          self.x,
+          self.y,
+          self.w / self.totalFrames,
+          self.h);
+      }
+    }
+     self.load = function() {
+       var image = new Image();
+       image.src = img;
+       self.image = image;
+     }
+     self.update = function() {
+       self.tickCount += 1;
+
+       if (self.tickCount > self.ticksPerFrame) {
+          self.tickCount = 0;
+          if (self.frameIndex < self.totalFrames - 1) {
+            self.frameIndex += 1;
+          }
+          else if (self.loop) {
+            self.frameIndex = 0;
+          }
+       }
+     }
+     self.load();
+  }
+ </script>
+</body>
+</html>
