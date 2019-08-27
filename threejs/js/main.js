@@ -70,5 +70,14 @@ document.addEventListener("DOMContentLoaded", function(){
   // Add the light to the scene
   scene.add(pointLight);
 
-  renderer.render(scene, camera);
+  function update () {
+    // Draw!
+    renderer.render(scene, camera);
+
+    // Schedule the next frame.
+    requestAnimationFrame(update);
+  }
+
+  // Schedule the first frame.
+  requestAnimationFrame(update);
 });
