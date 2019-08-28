@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const FAR = 10000;
 
   // Get the DOM element to attach to
-  const container =
-      document.querySelector('#container');
+  const container = document.querySelector('#container');
 
   // Create a WebGL renderer, camera, and a scene
   const renderer = new THREE.WebGLRenderer();
