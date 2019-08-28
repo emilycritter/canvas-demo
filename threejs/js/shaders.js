@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
       HEIGHT = 300;
 
   var VIEW_ANGLE = 45,
-        ASPECT = WIDTH / HEIGHT,
-        NEAR = 0.1,
-        FAR = 10000;
+      ASPECT = WIDTH / HEIGHT,
+      NEAR = 0.1,
+      FAR = 10000;
 
   var $container = $('#container');
 

@@ -8,12 +8,10 @@
     <div class="" id="container"></div>
   </body>
   <script type="x-shader/x-vertex" id="vertexshader">
-    // switch on high precision floats
-    #ifdef GL_ES
-    precision highp float;
-    #endif
+    varying vec3 vNormal;
 
     void main() {
+      vNormal = normal;
       gl_Position = projectionMatrix *
                     modelViewMatrix *
                     vec4(position,1.0);
